@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
+const TableQuestions = require("./database/ModelQuestions");
 
 connection
   .authenticate()
@@ -33,7 +34,16 @@ app.post("/save-ask", (req, res) => {
   var title = req.body.title;
   var description = req.body.description;
 
-  res.send(title + description);
+  TableQuestions.create({
+    title: title,
+    description: description,
+  })
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch(() => {
+      console.log("deu erro ao salvar pergunta");
+    });
 });
 
 app.listen(8000, () => {
