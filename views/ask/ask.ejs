@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <div class="container">
+      <div class="heading">
+        <div class="row">
+          <h3>Faça sua pergunta</h3>
+        </div>
+      </div>
+
+      <div class="form">
+        <form method="POST" action="/save-ask">
+          <label>Titulo</label>
+          <input type="text" name="title" />
+
+          <Label>Pergunta</Label>
+          <textarea name="question" rows="5"></textarea>
+
+          <Button>Enviar</Button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
