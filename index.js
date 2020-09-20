@@ -34,6 +34,20 @@ app.get("/ask", (req, res) => {
   res.render("ask/ask", {});
 });
 
+app.get("/ask/:id", (req, res) => {
+  var id = req.params.id;
+
+  TableQuestions.findOne({
+    where: { id: id },
+  }).then((ask) => {
+    if (ask != undefined) {
+      res.render("ask/askView", { status: "OK", ask: ask });
+    } else {
+      res.render("ask/askView", { status: "ERROR", ask: ask });
+    }
+  });
+});
+
 app.post("/save-ask", (req, res) => {
   var title = req.body.title;
   var description = req.body.description;

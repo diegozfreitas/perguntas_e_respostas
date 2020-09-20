@@ -4,29 +4,30 @@
   <body>
     <%- include('../partials/header.ejs') %>
     <div class="container">
+      <% if(status === "ERROR"){%>
       <div class="heading">
         <div class="row">
-          <h3>Algumas Perguntas</h3>
+          <h3>404 - Pergunta não encontrada</h3>
         </div>
       </div>
 
-      <div id="asks">
-        <% perguntas.forEach(pergunta => { %>
+      <% }else{ %>
+      <div id="askView">
         <div class="ask">
           <div class="askHeader">
-            <div><h3><%= pergunta.title %></h3></div>
+            <div><h3><%= ask.title %></h3></div>
             <div>
-              <a href="/ask/<%= pergunta.id %>" class="button">Ver Respostas</a>
+              <a href="#" class="button">Responder</a>
             </div>
           </div>
 
           <div class="askBody">
-            <p><%= pergunta.description %></p>
+            <p><%= ask.description %></p>
           </div>
         </div>
-
-        <% })%>
       </div>
+
+      <% } %>
     </div>
   </body>
 </html>
