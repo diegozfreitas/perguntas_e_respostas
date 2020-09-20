@@ -6,8 +6,24 @@
     <div class="container">
       <div class="heading">
         <div class="row">
-          <h3>Sou a Index</h3>
+          <h3>Algumas Perguntas</h3>
         </div>
+      </div>
+
+      <div id="asks">
+        <% perguntas.forEach(pergunta => { %>
+        <div class="ask">
+          <div class="askHeader">
+            <div><h3><%= pergunta.title %></h3></div>
+            <div><a href="" class="button">Ver Respostas</a></div>
+          </div>
+
+          <div class="askBody">
+            <p><%= pergunta.description %></p>
+          </div>
+        </div>
+
+        <% })%>
       </div>
     </div>
   </body>

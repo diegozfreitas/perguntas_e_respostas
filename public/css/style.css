@@ -21,6 +21,27 @@ header {
   background: #428fef;
   padding: 20px;
 }
+header div.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header a.button {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  border: 1px solid transparent;
+  padding: 8px 20px;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s;
+}
+header a.button:hover {
+  -webkit-box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.5);
+}
 
 .form {
   padding: 40px;
@@ -52,4 +73,50 @@ header {
   padding: 8px 20px;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+#asks {
+}
+
+#asks .ask {
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border: 1px solid #dedede;
+  transition: 0.3s;
+  transform: scale(0.98);
+}
+#asks .ask:hover {
+  -webkit-box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.5);
+  transform: scale(1);
+  cursor: pointer;
+}
+
+#asks .ask .askHeader {
+  background-color: #dedede;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#asks .ask .askHeader a.button {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  border: 1px solid transparent;
+  padding: 8px 20px;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s;
+}
+#asks .ask .askHeader a.button:hover {
+  -webkit-box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.5);
+}
+
+#asks .ask .askBody {
+  padding: 10px 10px 20px 10px;
 }
