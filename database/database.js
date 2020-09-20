@@ -1,13 +1,8 @@
 const Sequelize = require("sequelize");
 
-const connection = new Sequelize(
-  "questions_answers",
-  "diegozf",
-  "g2-rHt*6f?V9",
-  {
-    host: "mysql669.umbler.com",
-    dialect: "mysql",
-  }
-);
+const connection = new Sequelize("questions_answers", "diegozf", "5NgN3fD_[l", {
+  host: "mysql669.umbler.com",
+  dialect: "mysql",
+});
 
 module.exports = connection;
