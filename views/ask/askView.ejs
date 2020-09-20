@@ -17,17 +17,58 @@
           <div class="askHeader">
             <div><h3><%= ask.title %></h3></div>
             <div>
-              <a href="#" class="button">Responder</a>
+              <a href="#formResposta" class="button">Responder</a>
             </div>
           </div>
 
           <div class="askBody">
             <p><%= ask.description %></p>
+            <% if(answers.length > 0){ %>
+            <div class="askAnswer">
+              <h3>
+                <%= answers.length > 1 ? answers.length+" Respostas" :
+                answers.length+" Resposta" %>
+              </h3>
+              <hr />
+              <% var count = 1 %> <% answers.forEach(response=>{ %>
+              <div class="answer">
+                <p>
+                  <i
+                    ><b
+                      ><%= count++ %> - <%= response.name %> respondeu...</b
+                    ></i
+                  >
+                  - <%= response.response %>
+                </p>
+              </div>
+              <% })%>
+            </div>
+            <% }%>
           </div>
         </div>
       </div>
 
+      <div class="form" id="formResposta">
+        <form method="POST" action="/save-answer">
+          <div class="formHeader">
+            <h3>Responder</h3>
+            <hr />
+          </div>
+
+          <label>Seu Nome</label>
+          <input type="text" name="name" />
+
+          <Label>Sua Resposta</Label>
+          <textarea name="response"></textarea>
+
+          <input type="hidden" name="questionId" value="<%= ask.id %>" />
+
+          <Button>Enviar</Button>
+        </form>
+      </div>
+
       <% } %>
     </div>
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>

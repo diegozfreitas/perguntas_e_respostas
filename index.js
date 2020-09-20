@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
 const TableQuestions = require("./database/ModelQuestions");
+const TableAnswers = require("./database/ModelAnswers");
 
 connection
   .authenticate()
@@ -41,7 +42,16 @@ app.get("/ask/:id", (req, res) => {
     where: { id: id },
   }).then((ask) => {
     if (ask != undefined) {
-      res.render("ask/askView", { status: "OK", ask: ask });
+      TableAnswers.findAll({
+        raw: true,
+        where: { questionId: ask.id },
+      }).then((answers) => {
+        res.render("ask/askView", {
+          status: "OK",
+          ask: ask,
+          answers: answers,
+        });
+      });
     } else {
       res.render("ask/askView", { status: "ERROR", ask: ask });
     }
@@ -61,6 +71,24 @@ app.post("/save-ask", (req, res) => {
     })
     .catch(() => {
       console.log("deu erro ao salvar pergunta");
+    });
+});
+
+app.post("/save-answer", (req, res) => {
+  var name = req.body.name;
+  var response = req.body.response;
+  var questionId = req.body.questionId;
+
+  TableAnswers.create({
+    name: name,
+    response: response,
+    questionId: questionId,
+  })
+    .then(() => {
+      res.redirect("/ask/" + questionId);
+    })
+    .catch(() => {
+      console.log("deu erro ao salvar resposta");
     });
 });
 
