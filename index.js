@@ -92,6 +92,6 @@ app.post("/save-answer", (req, res) => {
     });
 });
 
-app.listen(8000, () => {
+app.listen(80, () => {
   console.log("App rodando!");
 });
